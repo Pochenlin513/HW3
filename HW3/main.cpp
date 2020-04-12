@@ -57,7 +57,10 @@ void logger(){
    timer.start();
    while(timer.read() <= 10){
       led = !led;
-      pc.printf("X: %1.4f\r\nY :%1.4f\r\nZ: %1.4f\r\ntilt: %1.4f\r\n", t[0], t[1], t[2], tilt);
+      pc.printf("%1.4f\r\n", t[0]);
+      pc.printf("%1.4f\r\n", t[1]);
+      pc.printf("%1.4f\r\n", t[2]);
+      pc.printf("%1.4f\r\n", tilt);
       wait(0.1);
    }
    led = 1;
@@ -113,7 +116,7 @@ void accmeter(){
 }
 
 void btn_handler(){
-    queue.call(logger);
+   queue.call(logger);
 }
 
 void FXOS8700CQ_readRegs(int addr, uint8_t * data, int len) {
